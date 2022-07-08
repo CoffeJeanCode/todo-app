@@ -29,8 +29,10 @@ const TodoList = () => {
               type="checkbox"
               checked={todo.completed}
               onChange={handleToggleTodo(todo.id)}
+              id={`check-${todo.id}`}
+              name={`check-${todo.id}`}
             />
-            <span>{todo.title}</span>
+            <label htmlFor={`check-${todo.id}`}>{todo.title}</label>
             <button onClick={handleRemoveTodo(todo.id)}>X</button>
           </li>
         ))}

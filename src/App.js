@@ -1,11 +1,11 @@
-import { ThemeProvider } from "@emotion/react";
+import { css, Global, ThemeProvider } from "@emotion/react";
+import { normalize } from "polished";
 import React from "react";
 import { useRecoilValue } from "recoil";
 import Heading from "./components/Heading";
 import TodoList from "./components/TodoList";
 import { themeAtom } from "./state/atoms";
-import { Global, css } from "@emotion/react";
-import { normalize } from "polished";
+import { darkTheme, ligthTheme } from "./theme";
 
 const App = () => {
   const theme = useRecoilValue(themeAtom);
@@ -25,20 +25,6 @@ const App = () => {
       <TodoList />
     </ThemeProvider>
   );
-};
-
-const darkTheme = {
-  colors: {
-    primaryColor: "hsl(235, 21%, 11%)",
-    fontColor: "hsl(236, 33%, 92%)",
-  },
-};
-
-const ligthTheme = {
-  colors: {
-    primaryColor: "hsl(0, 0%, 98%)",
-    fontColor: "hsl(236, 33%, 92%)",
-  },
 };
 
 export default App;
