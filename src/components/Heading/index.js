@@ -46,7 +46,7 @@ const HeadingTitleStyled = styled.div`
 `;
 
 const HeaderContentStyle = styled.div`
-  min-width: 70vh;
+  min-width: 34.8vw;
   margin: 0 auto;
 `;
 

@@ -1,4 +1,5 @@
 import { css, Global, ThemeProvider } from "@emotion/react";
+import styled from "@emotion/styled";
 import { normalize } from "polished";
 import React from "react";
 import { useRecoilValue } from "recoil";
@@ -21,10 +22,18 @@ const App = () => {
           }
         `}
       />
-      <Heading />
-      <TodoList />
+      <ContainerStyled>
+        <Heading />
+        <TodoList />
+      </ContainerStyled>
     </ThemeProvider>
   );
 };
+
+const ContainerStyled = styled.main`
+  width: 100%;
+  min-height: 100vh;
+  background-color: ${({ theme }) => theme.colors.secondaryColor};
+`;
 
 export default App;

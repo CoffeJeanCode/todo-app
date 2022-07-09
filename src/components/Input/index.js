@@ -3,6 +3,8 @@ import styled from "@emotion/styled";
 import { useRecoilState } from "recoil";
 import { todosAtom } from "../../state/atoms";
 import { createID } from "../../utils/createId";
+import { CheckIcon } from "../Icons";
+import { position } from "polished";
 
 const Input = () => {
   const [title, setTitle] = useState("");
@@ -13,12 +15,13 @@ const Input = () => {
   const handleAddTodo = (evt) => {
     evt.preventDefault();
 
+    if (!title.length) return;
+
     const newTodo = {
       id: createID(),
       title,
       completed,
     };
-
     setTodos([...todos, newTodo]);
 
     setTitle("");
@@ -27,13 +30,17 @@ const Input = () => {
 
   return (
     <InputContainerStyled onSubmit={handleAddTodo}>
-      <InputCheckBoxStyled
-        type="checkbox"
-        checked={completed}
-        onChange={() => setCompleted(!completed)}
-      />
+      <div style={{ ...position("relative") }}>
+        <InputCheckBoxStyled
+          type="checkbox"
+          checked={completed}
+          onChange={() => setCompleted(!completed)}
+        />
+        {completed && <CheckIconStyled />}
+      </div>
       <InputStyled
         type="text"
+        placeholder="Create a new todo..."
         autoComplete="off"
         value={title}
         onChange={(evt) => setTitle(evt.target.value)}
@@ -51,7 +58,7 @@ const InputCheckBoxStyled = styled.input`
   color: currentColor;
   width: 1.15em;
   height: 1.15em;
-  border: ${({ theme }) => `0.1rem solid ${theme.colors.auxialiary}`};
+  border: ${({ theme }) => `0.1rem solid ${theme.colors.auxialiary1}`};
   border-radius: 50%;
   padding: 0.8rem;
   transform: translateY(-0.075em);
@@ -68,12 +75,19 @@ const InputContainerStyled = styled.form`
   column-gap: 2rem;
   border-radius: 5px;
 `;
+const CheckIconStyled = styled(CheckIcon)`
+  position: absolute;
+  top: 28%;
+  left: 0.6rem;
+  width: 0.7rem;
+  height: 0.7rem;
+`;
 
 const InputStyled = styled.input`
   width: 100%;
   height: 100%;
   background-color: ${({ theme }) => theme.colors.secondaryColor};
-  color: ${({ theme }) => theme.colors.fontColor};
+  color: ${({ theme }) => theme.colors.auxialiary3};
   border: none;
   &:active,
   &:focus {
