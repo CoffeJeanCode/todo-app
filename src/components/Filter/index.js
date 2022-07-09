@@ -47,12 +47,6 @@ const FilterContainerStyled = styled.div`
     border: none;
     background: none;
     color: ${({ theme }) => theme.colors.auxialiary4};
-    ${({ type, theme }) =>
-      type === "all"
-        ? `&:nth-of-type(1) {
-        color: ${theme.colors.primayColor}
-      }`
-        : ""};
     &:focus {
       color: ${({ theme }) => theme.colors.primaryColor};
     }
@@ -60,8 +54,24 @@ const FilterContainerStyled = styled.div`
       color: ${({ theme }) => theme.colors.auxialiary3};
     }
   }
+  @media (max-width: 375px) {
+    justify-content: space-between;
+    padding: 1rem;
+  }
 `;
-const FilterStyled = styled.div``;
+const FilterStyled = styled.div`
+  @media (max-width: 375px) {
+    order: 2;
+    position: absolute;
+    border-radius: 5px;
+    padding: 1rem;
+    left: 0;
+    right: 0;
+    text-align: center;
+    bottom: -150%;
+    background-color: ${({ theme }) => theme.colors.secondaryColor};
+  }
+`;
 
 const ItemLeftStyled = styled.div`
   color: ${({ theme }) => theme.colors.auxialiary4};

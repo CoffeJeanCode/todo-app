@@ -36,6 +36,9 @@ const HeaderStyle = styled.header`
   color: ${({ theme }) => theme.colors.titleColor};
   display: grid;
   place-items: center;
+  @media (max-width: 375px) {
+    background-image: ${({ theme }) => `url(${theme.images.mobile})`};
+  }
 `;
 
 const HeadingTitleStyled = styled.div`

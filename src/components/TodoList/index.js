@@ -71,7 +71,10 @@ const TodoListContainerStyled = styled.section`
   border-radius: 5px;
   padding: 0 0 1rem 0;
   transform: translateY(-30px);
-  overflow: hidden;
+  @media (max-width: 375px) {
+    overflow: auto;
+    max-width: 87.8vw;
+  }
 `;
 
 const NoTodosTitleStyled = styled.h2`
@@ -136,6 +139,12 @@ const TodoItemStyled = styled.li`
   }
 
   &:hover {
+    button {
+      opacity: 1;
+    }
+  }
+
+  @media (max-width: 785px) {
     button {
       opacity: 1;
     }
